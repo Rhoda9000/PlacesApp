@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlacesApp.Views.PlaceDetailsPage"
+             Title="Place Details">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="DarkSlateGray" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid Padding="20">
+        <ActivityIndicator IsRunning="{Binding IsLoading}" 
+                           IsVisible="{Binding IsLoading}" 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+        <ScrollView>
+            <Frame CornerRadius="10"
+                   Padding="10"
+                   BackgroundColor="White"
+                   HasShadow="True"
+                   Margin="0,0,0,10">
+                <StackLayout Spacing="10">
+                    <Image Source="default_image.png" 
+                           Aspect="AspectFill"
+                           HeightRequest="200"
+                           WidthRequest="200"
+                           HorizontalOptions="Center" />
+                    <Label Text="{Binding PlaceDetails.Name}"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    <Label Text="{Binding PlaceDetails.FormattedAddress}"
+                           FontSize="18"
+                           HorizontalOptions="Center" />
+                    <Label Text="{Binding PlaceDetails.Vicinity}"
+                           FontSize="18"
+                           HorizontalOptions="Center" />
+                    <Label Text="{Binding PlaceDetails.Url}"
+                           FontSize="14"
+                           TextColor="Blue"
+                           HorizontalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding OpenUrlCommand}"
+                                CommandParameter="{Binding PlaceDetails.Url}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="5"
+                                 HorizontalOptions="Center">
+                        <Label Text="Longitude: " 
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding PlaceDetails.Longitude}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="5"
+                                 HorizontalOptions="Center">
+                        <Label Text="Latitude: " 
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding PlaceDetails.Latitude}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="5"
+                                 HorizontalOptions="Center">
+                        <Label Text="UTC Offset: " 
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding PlaceDetails.UtcOffset}" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </Grid>
+</ContentPage>
