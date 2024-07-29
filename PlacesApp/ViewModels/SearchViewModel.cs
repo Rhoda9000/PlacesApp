@@ -56,7 +56,7 @@ namespace PlacesApp.ViewModels
                     SearchResults.Add(result);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "An error occurred while searching for places.", "OK");
             }

@@ -11,5 +11,7 @@ namespace PlacesApp.Services.Interfaces
     {
         Task<List<Place>> SearchPlaces(string query);
         Task<PlaceDetails> GetPlaceDetails(string placeId);
+        Task<string> GetPhoto(string photoId);
+        Task<List<PlaceDetails>> FindNearbyPlaces(double latitude, double longitude, int radius = 2000);
     }
 }

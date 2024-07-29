@@ -7,13 +7,17 @@
     <Grid RowDefinitions="Auto,*" Padding="20">
         <StackLayout Grid.Row="0" Spacing="10">
             <Entry x:Name="SearchEntry"
-                   Placeholder="Enter search query"
+                   Placeholder="Enter place you want to search for"
                    Text="{Binding SearchQuery}"
                    ReturnCommand="{Binding SearchCommand}" />
             <Button Text="Search"
                     Command="{Binding SearchCommand}" />
         </StackLayout>
-        <ActivityIndicator Grid.Row="1" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" />
+        <ActivityIndicator Grid.Row="1" 
+                           IsRunning="{Binding IsLoading}" 
+                           IsVisible="{Binding IsLoading}" 
+                           WidthRequest="50" 
+                           HeightRequest="50" />
         <ListView Grid.Row="1" 
                   ItemsSource="{Binding SearchResults}"
                   HasUnevenRows="True"

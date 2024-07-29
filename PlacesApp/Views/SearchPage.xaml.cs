@@ -18,11 +18,14 @@ public partial class SearchPage : ContentPage
 
     private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
+        _viewModel.IsLoading = true;
         if (e.SelectedItem is Place selectedPlace)
         {
             var placeDetailsPage = _serviceProvider.GetRequiredService<PlaceDetailsPage>();
             await placeDetailsPage.LoadPlaceDetails(selectedPlace.PlaceId);
             await Navigation.PushAsync(placeDetailsPage);
+            ((ListView)sender).SelectedItem = null;
+            _viewModel.IsLoading = false;
         }
     }
 }

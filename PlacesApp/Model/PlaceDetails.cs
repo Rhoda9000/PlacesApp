@@ -15,5 +15,8 @@ namespace PlacesApp.Model
         public double Longitude { get; set; }
         public double Latitude { get; set; }
         public int UtcOffset { get; set; }
+        public string PlaceId { get; set; }
+
+        public List<Photo> Photos { get; set; }
     }
 }
